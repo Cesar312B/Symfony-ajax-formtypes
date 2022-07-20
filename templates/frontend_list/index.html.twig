@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+ <navbar class="navbar navbar-expande-lg navbar-dark bg-dark">
+ <div class="container-fluid">
+     <a href="#" class="navbar-brand" id="navBtn">Navbar</a>
+      {{ render(controller('App\\Controller\\FrontendListController::search')) }}
+ </div>
+ </navbar>
+ <div class="collapse" id="collapseExample">
+ <div class="card card-body" id="search_container"></div>
+ </div>
+
+ <div class="container mt-4 " id="content">
+  <div class="row mb-4">
+   <h1 class="display-4">{{ controller_name }}</h1>
+  </div>
+
+  <div class="row">
+   <div class="col-md-8">
+     <h6 class="float-end muted">Total task
+     <span class="badge bg-secondary" id="total_num_tasks"></span>
+     </h6>
+   </div>
+  </div>
+
+   <div class="row">
+    <div class="col-md-8 mt-3 overflow-auto" style="max-height:20em">
+     <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody id="tasks">
+            
+            </tbody>
+     </table>
+     
+    </div>
+    <div class="col-md-4">
+    <div id="add_form_view">
+     {{ render(controller('App\\Controller\\FrontendListController::add')) }}
+    </div>
+   <div id="edit_form-view" class="d-none">
+    {{ render(controller('App\\Controller\\FrontendListController::adit')) }}
+   </div>
+   
+   
+<div class="d-flex justify-content-center mt-4">
+<button class="btn btn-primary btn-sm d-none" id="btnBackAdd">
+regresar
+</button>
+</div>
+
+
+
+
+    </div>
+   </div>
+ </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('js/list/read.js') }}"></script>
+<script src="{{ asset('js/list/add.js') }}"></script>
+<script src="{{ asset('js/list/edit.js') }}"></script>
+<script src="{{ asset('js/list/delete.js') }}"></script>
+<script src="{{ asset('js/list/search.js') }}"></script>
+{% endblock %}

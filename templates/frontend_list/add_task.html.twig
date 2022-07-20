@@ -1,0 +1,19 @@
+{{ form_start(form,{'attr':{'class':'mt-3','id':'add_form'}}) }}
+{{ form_row(form.name,{'attr':{'class':' form-control mb-2',
+                              'placeholder':'Name of the task'},
+                              'required':false,
+                              'id':'add_name',
+                              'label':false
+                              }) }}
+{{ form_row(form.description,{'attr':{'class':' form-control mb-2',
+                              'placeholder':'Description of the task','rows':10},
+                              'required':false,
+                              'id':'add_description',
+                              'label':false
+                              }) }}
+{{ form_row(form.save,{'attr':{'class':' btn btn-success',
+                              'style':'display:block; width:100%;'},
+                              'id':'add_btn',
+                              'label':'Save'
+                              }) }}
+{{ form_end(form) }}
