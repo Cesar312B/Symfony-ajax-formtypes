@@ -10,7 +10,15 @@
                               'required':false,
                               'id':'add_description',
                               'label':false
-                              }) }}
+                     }) }}
+
+{{ form_row(form.categoria,{
+    'required': false,
+    'label':false,
+    'id':'add_categoria'
+}) }}
+                    
+
 {{ form_row(form.save,{'attr':{'class':' btn btn-success',
                               'style':'display:block; width:100%;'},
                               'id':'add_btn',

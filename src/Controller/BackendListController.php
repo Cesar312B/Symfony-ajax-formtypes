@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categoria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +25,9 @@ class BackendListController extends AbstractController
             $jsonData[]= array(
                 'id'=> $task->getId(),
                 'name'=> $task->getName(),
-                'description'=> $task->getDescription()
+                'description'=> $task->getDescription(),
+                'categoria' => $task->getCategoria()->getName(),
+                'categoria_id'=> $task->getCategoria()->getId()
             );
         }
 
@@ -37,15 +40,21 @@ class BackendListController extends AbstractController
      */
     public function add(Request $request,EntityManagerInterface $entityManager)
     {
+    
         $name= $request->get('name');
         $description= $request->get('description');
+        $categoria = $request->get('categoria');
+        $c= $entityManager->getRepository(Categoria::class)->find($categoria);
+
         $msg= null; 
         if(isset($name) && trim($name) != ''&& 
-        isset($description) && trim($description) != ''
+           isset($description) && trim($description) != '' &&
+           isset($categoria)  && trim($categoria) != ''
         ){
             $task= new Lista();
             $task->setName($name);
             $task->setDescription($description);
+            $task->setCategoria($c);
             $entityManager->persist($task);
             $flush= $entityManager->flush();
             if($flush == null){
@@ -69,13 +78,15 @@ class BackendListController extends AbstractController
         $data= $request->get('postData');
         $name= $data['name'];
         $description= $data['description'];
+        $categoria= $data['categoria'];
         $id= $data['id'];
-        
-        $entityManager= $this->getDoctrine()->getManager();
+        $c= $entityManager->getRepository(Categoria::class)->find($categoria);
+    
         $task= $entityManager->getRepository(Lista::class)->find($id);
 
             $task->setName($name);
             $task->setDescription($description);
+            $task->setCategoria($c);
             $entityManager->persist($task);
             $flush= $entityManager->flush();
             if($flush == null){

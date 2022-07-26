@@ -3,7 +3,8 @@ $(document).ready( function () {
       e.preventDefault();
       const postData= {
         name:$('#add_name').val(),
-        description:$('#add_description').val()
+        description:$('#add_description').val(),
+        categoria:$('#add_categoria').val()
       };
 
       $.post('/add_back',postData,function(data){

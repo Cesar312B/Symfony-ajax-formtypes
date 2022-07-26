@@ -27,6 +27,11 @@ class Lista
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categoria::class, inversedBy="listas")
+     */
+    private $categoria;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Lista
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCategoria(): ?Categoria
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria(?Categoria $categoria): self
+    {
+        $this->categoria = $categoria;
 
         return $this;
     }

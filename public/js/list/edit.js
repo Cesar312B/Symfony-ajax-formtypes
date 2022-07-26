@@ -18,6 +18,8 @@ $(document).ready( function () {
         array_info = info.split(',');
         $('#edit_name').val(array_info[1]);
         $('#edit_description').val(array_info[2]);
+        $('#edit_categoria').val(array_info[3]);
+
 
         $(document).on('click','#btnEditForm', function(e){
             e.preventDefault();
@@ -25,6 +27,7 @@ $(document).ready( function () {
             const postData= {
                 name:$('#edit_name').val(),
                 description:$('#edit_description').val(),
+                categoria:$('#edit_categoria').val(),
                 id: array_info[0]
               };
 

@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Categoria;
 use App\Entity\Lista;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -17,6 +19,11 @@ class ListType extends AbstractType
         $builder
             ->add('name',TextType::class)
             ->add('description',TextareaType::class)
+            ->add('categoria',EntityType::class,[
+                'class'=> Categoria::class,
+                'placeholder'=>'Seleccione una Carrera',
+                'choice_label'=> 'name'
+            ])
             ->add('save',SubmitType::class)
         ;
     }

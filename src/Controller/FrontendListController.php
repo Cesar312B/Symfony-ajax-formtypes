@@ -69,7 +69,8 @@ class FrontendListController extends AbstractController
                 $task_list= array(
                    
                     'name'=> $task->getName(),
-                    'description'=> $task->getDescription()
+                    'description'=> $task->getDescription(),
+                    'categoria'=> $task->getCategoria()->getName()
     
                 );
               }
