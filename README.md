@@ -1,5 +1,6 @@
 # Symfony-ajax-formtypes
 
-Proyecto Symfony que utiliza los formularios del framework con ajax
+Proyecto Symfony Ajax con dos tablas relacionadas
 
-![image](https://user-images.githubusercontent.com/86753747/180102194-094ee4dc-980c-4d3e-9d7a-46aed7302b76.png)
+![image](https://user-images.githubusercontent.com/86753747/181052260-911c93e3-477c-46de-a6f8-bf56137ed0fb.png)
+
